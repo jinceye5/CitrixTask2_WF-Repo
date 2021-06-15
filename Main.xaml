@@ -1,0 +1,188 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1182,2237" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:hg="clr-namespace:hchb_process.General;assembly=hchb_process" xmlns:hn="clr-namespace:hchb_process.New_Referral;assembly=hchb_process" xmlns:hnd="clr-namespace:hchb_process.New_Referral.demographics;assembly=hchb_process" xmlns:hr="clr-namespace:hchb_process.Ribbon_Menu;assembly=hchb_process" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="48">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>hchb_process.General</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>UiPath.OCR.Activities</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>hchb_process.Ribbon_Menu</x:String>
+      <x:String>UiPath.Core.Activities.OCR.Engines</x:String>
+      <x:String>UiPath.Vision.Core.OCR</x:String>
+      <x:String>hchb_process.New_Referral</x:String>
+      <x:String>hchb_process.New_Referral.demographics</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>hchb_process</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="e5 task 2" sap:VirtualizedContainerService.HintSize="452,2172" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="WorkbookPath">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">input\hchb.xlsx</Literal>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Default="Sheet1" Name="Sheetname" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Dt_Input" />
+      <Variable x:TypeArguments="ss:SecureString" Name="Password" />
+      <Variable x:TypeArguments="x:String" Name="UserName" />
+      <Variable x:TypeArguments="ui:Browser" Name="browser_tab" />
+      <Variable x:TypeArguments="x:Int32" Name="row_no" />
+      <Variable x:TypeArguments="x:String" Name="Result_MRN" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Dt_final" />
+      <Variable x:TypeArguments="x:String" Default="HCHB R2 - TRADITIONS HEALTH CARE TRAINING" Name="AppName" />
+      <Variable x:TypeArguments="x:String" Default="RuOFwAqoJ21ubRvWCkA2dnK3ASHCtdf50fLACYjdLck+qO3FE5xyG4np5jcvOm6LmnAjZb3Ci4+zG0OVj8nHtg==" Name="API_key" />
+      <Variable x:TypeArguments="x:String" Default="Clinical Manager" Name="ItemName" />
+      <Variable x:TypeArguments="x:String" Default="New Referral" Name="submenuItemName" />
+      <Variable x:TypeArguments="x:String" Name="output_WorkbookPath">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">output\hchb_output.xlsx</Literal>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="Title_popup">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">Cancel changes</Literal>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="Action_popup">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">Yes</Literal>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="Anchor_popup">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">Cancel changes</Literal>
+        </Variable.Default>
+      </Variable>
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="hchb_login" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="410,79" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[Password]" Username="[UserName]" />
+    <ui:ReadRange AddHeaders="True" DataTable="[Dt_Input]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="410,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[Sheetname]" WorkbookPath="[WorkbookPath]">
+      <ui:ReadRange.Range>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </ui:ReadRange.Range>
+    </ui:ReadRange>
+    <hg:Launch sap:VirtualizedContainerService.HintSize="410,22" sap2010:WorkflowViewState.IdRef="Launch_1" in_Url="https://login.hchb.com/vpn/index.html" out_BrowserTab="[browser_tab]" />
+    <hg:LogIn AppName="[AppName]" HCHB_BrowserTab="[browser_tab]" sap:VirtualizedContainerService.HintSize="410,132" sap2010:WorkflowViewState.IdRef="LogIn_1" Password="[Password]" UserName="[UserName]" />
+    <Assign sap:VirtualizedContainerService.HintSize="410,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[row_no]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[Dt_Input]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="410,1345" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,1225" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <hr:Open_Menu_Item APIkey="[API_key]" DisplayName="Open Menu Item" sap:VirtualizedContainerService.HintSize="334,185" sap2010:WorkflowViewState.IdRef="Open_Menu_Item_1" ItemName="[ItemName]" SubmenuItemName="[submenuItemName]" />
+            <hn:Patient_Intake DisplayName="Patient Intake" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="Patient_Intake_1" Input_DataTable="[Dt_Input]" counter="[row_no]" />
+            <hn:Basic_Info DisplayName="Basic Info" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="Basic_Info_1" Input_DataTable="[Dt_Input]" counter="[row_no]" />
+            <hnd:Extract_MRN DisplayName="Extract MRN" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Extract_MRN_1" MRN_Number="[Result_MRN]" />
+            <hnd:Popup_handler Action="[Action_popup]" Anchor="[Anchor_popup]" DisplayName="Popup handler" sap:VirtualizedContainerService.HintSize="334,185" sap2010:WorkflowViewState.IdRef="Popup_handler_1" Title="[Title_popup]" />
+            <hnd:ExtractMRN_Postcheck DisplayName="ExtractMRN Postcheck" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="ExtractMRN_Postcheck_1" />
+            <ui:WriteCell Cell="[&quot;N&quot;+row_no.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="[Sheetname]" Text="[Result_MRN]" WorkbookPath="[WorkbookPath]" />
+            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[row_no]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[row_no+1]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <ui:WriteRange AddHeaders="False" DataTable="[Dt_final]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="410,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[Sheetname]" StartingCell="A1" WorkbookPath="[output_WorkbookPath]" />
+  </Sequence>
+</Activity>
