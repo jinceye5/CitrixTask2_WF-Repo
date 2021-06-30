@@ -1,6 +1,53 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1182,2237" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:hg="clr-namespace:hchb_process.General;assembly=hchb_process" xmlns:hn="clr-namespace:hchb_process.New_Referral;assembly=hchb_process" xmlns:hnd="clr-namespace:hchb_process.New_Referral.demographics;assembly=hchb_process" xmlns:hr="clr-namespace:hchb_process.Ribbon_Menu;assembly=hchb_process" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:hg="clr-namespace:hchb_process.General;assembly=hchb_process" xmlns:hn="clr-namespace:hchb_process.New_Referral;assembly=hchb_process" xmlns:hr="clr-namespace:hchb_process.Ribbon_Menu;assembly=hchb_process" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="mailId" Type="InArgument(x:String)" />
+    <x:Property Name="Sheetname" Type="InArgument(x:String)" />
+    <x:Property Name="Password" Type="InArgument(ss:SecureString)" />
+    <x:Property Name="UserName" Type="InArgument(x:String)" />
+    <x:Property Name="Title_popup" Type="InArgument(x:String)" />
+    <x:Property Name="Action_popup" Type="InArgument(x:String)" />
+    <x:Property Name="Anchor_popup" Type="InArgument(x:String)" />
+    <x:Property Name="ItemName" Type="InArgument(x:String)" />
+    <x:Property Name="submenuItemName" Type="InArgument(x:String)" />
+    <x:Property Name="API_key" Type="InArgument(x:String)" />
+    <x:Property Name="AppName" Type="InArgument(x:String)" />
+    <x:Property Name="AssetName" Type="InArgument(x:String)" />
+    <x:Property Name="Url" Type="InArgument(x:String)" />
+    <x:Property Name="WorkbookPath" Type="InArgument(x:String)" />
+    <x:Property Name="Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="delay" Type="InArgument(x:Int32)" />
+    <x:Property Name="account" Type="InArgument(x:String)" />
+    <x:Property Name="retryCount" Type="InArgument(x:Int32)" />
+    <x:Property Name="retryInterval" Type="InArgument(x:TimeSpan)" />
+  </x:Members>
+  <this:Main.Password>
+    <InArgument x:TypeArguments="ss:SecureString" />
+  </this:Main.Password>
+  <this:Main.UserName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Main.UserName>
+  <this:Main.Url>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Main.Url>
+  <this:Main.Config>
+    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
+  </this:Main.Config>
+  <this:Main.account>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Main.account>
+  <this:Main.retryCount>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:Main.retryCount>
+  <this:Main.retryInterval>
+    <InArgument x:TypeArguments="x:TimeSpan" />
+  </this:Main.retryInterval>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>909,643</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="48">
+    <scg:List x:TypeArguments="x:String" Capacity="52">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -49,10 +96,14 @@
       <x:String>UiPath.Vision.Core.OCR</x:String>
       <x:String>hchb_process.New_Referral</x:String>
       <x:String>hchb_process.New_Referral.demographics</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="38">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -81,108 +132,360 @@
       <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="e5 task 2" sap:VirtualizedContainerService.HintSize="452,2172" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence DisplayName="e5 task2 " sap:VirtualizedContainerService.HintSize="480,578" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="WorkbookPath">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">input\hchb.xlsx</Literal>
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="x:String" Default="Sheet1" Name="Sheetname" />
-      <Variable x:TypeArguments="sd:DataTable" Name="Dt_Input" />
-      <Variable x:TypeArguments="ss:SecureString" Name="Password" />
-      <Variable x:TypeArguments="x:String" Name="UserName" />
-      <Variable x:TypeArguments="ui:Browser" Name="browser_tab" />
-      <Variable x:TypeArguments="x:Int32" Name="row_no" />
-      <Variable x:TypeArguments="x:String" Name="Result_MRN" />
-      <Variable x:TypeArguments="sd:DataTable" Name="Dt_final" />
-      <Variable x:TypeArguments="x:String" Default="HCHB R2 - TRADITIONS HEALTH CARE TRAINING" Name="AppName" />
-      <Variable x:TypeArguments="x:String" Default="RuOFwAqoJ21ubRvWCkA2dnK3ASHCtdf50fLACYjdLck+qO3FE5xyG4np5jcvOm6LmnAjZb3Ci4+zG0OVj8nHtg==" Name="API_key" />
-      <Variable x:TypeArguments="x:String" Default="Clinical Manager" Name="ItemName" />
-      <Variable x:TypeArguments="x:String" Default="New Referral" Name="submenuItemName" />
-      <Variable x:TypeArguments="x:String" Name="output_WorkbookPath">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">output\hchb_output.xlsx</Literal>
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="x:String" Name="Title_popup">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">Cancel changes</Literal>
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="x:String" Name="Action_popup">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">Yes</Literal>
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="x:String" Name="Anchor_popup">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">Cancel changes</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="input\Config Sheet.xlsx" Name="ConfigFile" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="hchb_login" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="410,79" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[Password]" Username="[UserName]" />
-    <ui:ReadRange AddHeaders="True" DataTable="[Dt_Input]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="410,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[Sheetname]" WorkbookPath="[WorkbookPath]">
-      <ui:ReadRange.Range>
-        <InArgument x:TypeArguments="x:String">
-          <Literal x:TypeArguments="x:String" Value="" />
-        </InArgument>
-      </ui:ReadRange.Range>
-    </ui:ReadRange>
-    <hg:Launch sap:VirtualizedContainerService.HintSize="410,22" sap2010:WorkflowViewState.IdRef="Launch_1" in_Url="https://login.hchb.com/vpn/index.html" out_BrowserTab="[browser_tab]" />
-    <hg:LogIn AppName="[AppName]" HCHB_BrowserTab="[browser_tab]" sap:VirtualizedContainerService.HintSize="410,132" sap2010:WorkflowViewState.IdRef="LogIn_1" Password="[Password]" UserName="[UserName]" />
-    <Assign sap:VirtualizedContainerService.HintSize="410,60" sap2010:WorkflowViewState.IdRef="Assign_1">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:Int32">[row_no]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:Int32">0</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[Dt_Input]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="410,1345" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-      <ui:ForEachRow.Body>
-        <ActivityAction x:TypeArguments="sd:DataRow">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,1225" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,486" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Variables>
+        <Variable x:TypeArguments="x:String" Name="mailbody" />
+      </TryCatch.Variables>
+      <TryCatch.Try>
+        <Sequence DisplayName="e5 task 2" sap:VirtualizedContainerService.HintSize="602,4885" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="sd:DataTable" Name="Dt_Input" />
+            <Variable x:TypeArguments="ui:Browser" Name="browser_tab" />
+            <Variable x:TypeArguments="x:Int32" Name="row_no" />
+            <Variable x:TypeArguments="x:String" Name="Result_MRN" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="560,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;e5 task 2 execution started&quot;]" />
+          <Assign DisplayName="Assing out_Config (initialization)" sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[Config]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[New Dictionary(of String,Object)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Sequence sap2010:Annotation.AnnotationText="Read data from the configuration file and add them to the Config dictionary." DisplayName="Get data from config file" sap:VirtualizedContainerService.HintSize="560,638" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataTable" Name="config_Dt" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <hr:Open_Menu_Item APIkey="[API_key]" DisplayName="Open Menu Item" sap:VirtualizedContainerService.HintSize="334,185" sap2010:WorkflowViewState.IdRef="Open_Menu_Item_1" ItemName="[ItemName]" SubmenuItemName="[submenuItemName]" />
-            <hn:Patient_Intake DisplayName="Patient Intake" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="Patient_Intake_1" Input_DataTable="[Dt_Input]" counter="[row_no]" />
-            <hn:Basic_Info DisplayName="Basic Info" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="Basic_Info_1" Input_DataTable="[Dt_Input]" counter="[row_no]" />
-            <hnd:Extract_MRN DisplayName="Extract MRN" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Extract_MRN_1" MRN_Number="[Result_MRN]" />
-            <hnd:Popup_handler Action="[Action_popup]" Anchor="[Anchor_popup]" DisplayName="Popup handler" sap:VirtualizedContainerService.HintSize="334,185" sap2010:WorkflowViewState.IdRef="Popup_handler_1" Title="[Title_popup]" />
-            <hnd:ExtractMRN_Postcheck DisplayName="ExtractMRN Postcheck" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="ExtractMRN_Postcheck_1" />
-            <ui:WriteCell Cell="[&quot;N&quot;+row_no.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="[Sheetname]" Text="[Result_MRN]" WorkbookPath="[WorkbookPath]" />
-            <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[config_Dt]" DisplayName="Read range (Config Sheet)" sap:VirtualizedContainerService.HintSize="518,87" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="[ConfigFile]" />
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[config_Dt]" DisplayName="For each configuration row" sap:VirtualizedContainerService.HintSize="518,388" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
+                  </ActivityAction.Argument>
+                  <If sap2010:Annotation.AnnotationText="Read non-empty rows in the sheet." Condition="[Not String.IsNullOrWhiteSpace(row(&quot;Name&quot;).ToString.Trim)]" DisplayName="If configuration row is not empty" sap:VirtualizedContainerService.HintSize="484,268" sap2010:WorkflowViewState.IdRef="If_1">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Assign DisplayName="Add Config key/value pair" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[Config(Row("Name").ToString.Trim)]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[Row("Value")]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </If.Then>
+                  </If>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+          </Sequence>
+          <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[AssetName]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[Config("AssetName").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[WorkbookPath]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[Config("WorkbookPath").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[Sheetname]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[Config("Sheetname").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[Url]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[Config("Url").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[API_key]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[Config("API_key").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[ItemName]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[Config("ItemName").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[submenuItemName]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[Config("submenuItemName").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[Title_popup]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[Config("Title_popup").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[Action_popup]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[Config("Action_popup").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[Anchor_popup]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[Config("Action_popup").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[delay]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[cint(Config("delay"))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[mailId]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[Config("mailid").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[account]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[Config("account").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_21">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[retryCount]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[cint(Config("retryCount"))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_23">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:TimeSpan">[retryInterval]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:TimeSpan">[TimeSpan.Parse(Config("retryInterval").ToString.Split(" "c)(1).ToString.Trim)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[AssetName]" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="560,79" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[Password]" Username="[UserName]" />
+          <ui:ReadRange AddHeaders="True" DataTable="[Dt_Input]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="560,51" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[Sheetname]" WorkbookPath="[WorkbookPath]">
+            <ui:ReadRange.Range>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+            </ui:ReadRange.Range>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ReadRange>
+          <hg:Launch out_BrowserTab="{x:Null}" sap:VirtualizedContainerService.HintSize="560,51" sap2010:WorkflowViewState.IdRef="Launch_2" in_Url="[Url]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </hg:Launch>
+          <hg:LogIn APIkey="[API_key]" AppName="[AppName]" HCHB_BrowserTab="[browser_tab]" sap:VirtualizedContainerService.HintSize="560,185" sap2010:WorkflowViewState.IdRef="LogIn_1" Password="[Password]" UserName="[UserName]" retryCount="[retryCount]" retryInterval="[retryInterval]" />
+          <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[row_no]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">0</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[Dt_Input]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="560,1658" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ForEachRow.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,1538" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <hr:Open_Menu_Item APIkey="[API_key]" DisplayName="Open Menu Item" sap:VirtualizedContainerService.HintSize="334,185" sap2010:WorkflowViewState.IdRef="Open_Menu_Item_1" ItemName="[ItemName]" SubmenuItemName="[submenuItemName]" />
+                  <hn:Patient_Intake APIkey="[API_key]" DisplayName="Patient Intake" sap:VirtualizedContainerService.HintSize="334,185" sap2010:WorkflowViewState.IdRef="Patient_Intake_1" Input_DataTable="[Dt_Input]" counter="[row_no]" />
+                  <hn:Basic_Info APIkey="[API_key]" DisplayName="Basic Info" sap:VirtualizedContainerService.HintSize="334,238" sap2010:WorkflowViewState.IdRef="Basic_Info_1" Input_DataTable="[Dt_Input]" counter="[row_no]" delay="[delay]" />
+                  <hn:Extract_MRN APIkey="[API_key]" DisplayName="Extract MRN" sap:VirtualizedContainerService.HintSize="334,185" sap2010:WorkflowViewState.IdRef="Extract_MRN_1" MRN_Number="[Result_MRN]" Title="[Title_popup]" delay="[delay]" />
+                  <hn:Popup_handler APIkey="[API_key]" Action="[Action_popup]" Anchor="[Anchor_popup]" DisplayName="Popup handler" sap:VirtualizedContainerService.HintSize="334,238" sap2010:WorkflowViewState.IdRef="Popup_handler_1" Title="[Title_popup]" />
+                  <ui:WriteCell Cell="[&quot;N&quot;+row_no.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="[Sheetname]" Text="[Result_MRN]" WorkbookPath="[WorkbookPath]" />
+                  <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[row_no]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[row_no+1]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEachRow.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEachRow>
+          <Assign sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[mailbody]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["Bot executed successfully"]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[mailbody]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String" xml:space="preserve">["bot failed due to the reason :  "+exception.Message]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="ui:BusinessRuleException">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
+            </ActivityAction.Argument>
+            <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_20">
               <Assign.To>
-                <OutArgument x:TypeArguments="x:Int32">[row_no]</OutArgument>
+                <OutArgument x:TypeArguments="x:String">[mailbody]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="x:Int32">[row_no+1]</InArgument>
+                <InArgument x:TypeArguments="x:String" xml:space="preserve">["bot failed due to the reason :  "+exception.Message]</InArgument>
               </Assign.Value>
             </Assign>
-          </Sequence>
-        </ActivityAction>
-      </ui:ForEachRow.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:ForEachRow>
-    <ui:WriteRange AddHeaders="False" DataTable="[Dt_final]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="410,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[Sheetname]" StartingCell="A1" WorkbookPath="[output_WorkbookPath]" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+      <TryCatch.Finally>
+        <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="376,237" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Account="[account]" Body="[mailbody]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="Bot Status" To="[mailId]">
+            <ui:SendOutlookMail.Files>
+              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+            </ui:SendOutlookMail.Files>
+          </ui:SendOutlookMail>
+        </Sequence>
+      </TryCatch.Finally>
+    </TryCatch>
   </Sequence>
 </Activity>

@@ -3,7 +3,7 @@
   "description": "Citrix Automation",
   "main": "Main.xaml",
   "dependencies": {
-    "hchb_process": "[1.0.7]",
+    "hchb_process": "[1.0.10]",
     "UiPath.Excel.Activities": "[2.10.4]",
     "UiPath.Mail.Activities": "[1.10.5]",
     "UiPath.System.Activities": "[21.4.1]",
